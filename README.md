@@ -1,6 +1,3 @@
-# bottom-sheet
- Responsive Bottom Sheet Modal Structure
-
 <h1>Responsive Bottom Sheet Modal Structure</h1>
     <p>You can create multiple bottom sheets on the same page.</p>
     <p>You can find the repository at <a href="https://github.com/trkaydn/bottom-sheet">here</a></p>
