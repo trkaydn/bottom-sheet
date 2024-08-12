@@ -1,7 +1,5 @@
 <h1>Responsive Bottom Sheet Modal Structure</h1>
     <p>You can create multiple bottom sheets on the same page.</p>
-    <p>You can find the repository at <a href="https://github.com/trkaydn/bottom-sheet">here</a></p>
-    <p>Contact me on <a href="https://github.com/trkaydn">GitHub</a></p>
 
 <h3>Desktop and Mobile Views</h3>
 <div style="text-align:center;">
