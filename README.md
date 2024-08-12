@@ -2,6 +2,7 @@
  Responsive Bottom Sheet Modal Structure
 
 
-![image](images/example-1.jpg)
+<img src="images/example-1.jpg" alt="alt text" width="300" height="300">
+
 
 ![image](images/example-2.jpg)
