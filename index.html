@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Responsive Bottom Sheet Modal</title>
+    <link rel="stylesheet" href="bottom-sheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="bottom-sheet.js" defer></script>
+</head>
+<body>
+
+    <h1>Responsive Bottom Sheet Modal Structure</h1>
+    <p>You can create multiple bottom sheets on the same page.</p>
+    <p>You can find the repository at <a href="https://github.com/trkaydn/bottom-sheet">here</a></p>
+    <p>Contact me on <a href="https://github.com/trkaydn">GitHub</a></p>
+
+    <!-- First Pop-up Trigger -->
+    <button class="show-modal" data-target="#bottomSheet1">Show Bottom Sheet 1</button>
+    
+    <!-- First Pop-up Structure -->
+    <div class="bottom-sheet" id="bottomSheet1">
+        <div class="sheet-overlay"></div>
+        <div class="content">
+            <div class="header">
+                <div class="drag-icon"><span></span></div>
+            </div>
+            <div class="body">
+                <h2>Bottom Sheet Modal 1</h2>
+                <p>This is the first bottom sheet modal content.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Pop-up Trigger -->
+    <button class="show-modal" data-target="#bottomSheet2">Show Bottom Sheet 2</button>
+    
+    <!-- Second Pop-up Structure -->
+    <div class="bottom-sheet" id="bottomSheet2">
+        <div class="sheet-overlay"></div>
+        <div class="content">
+            <div class="header">
+                <div class="drag-icon"><span></span></div>
+            </div>
+            <div class="body">
+                <h2>Bottom Sheet Modal 2</h2>
+                <p>This is the second bottom sheet modal content.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
