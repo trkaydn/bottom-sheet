@@ -39,13 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 startY = e.pageY || (e.touches && e.touches[0] && e.touches[0].pageY);
                 startHeight = pxToVh(sheetContent.scrollHeight);
                 bottomSheet.classList.add("dragging");
+                disableScroll();
             }
 
             const dragging = (e) => {
                 if (!isDragging) return;
                 const delta = startY - (e.pageY || (e.touches && e.touches[0] && e.touches[0].pageY));
                 const newHeight = startHeight + delta / window.innerHeight * 100;
-                if (newHeight < startHeight) updateSheetHeight(newHeight);              
+                if (newHeight < startHeight) updateSheetHeight(newHeight);
             }
 
             const dragStop = () => {
@@ -53,7 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (bottomSheet.classList.contains("dragging")) {
                     bottomSheet.classList.remove("dragging");
                     const sheetHeight = pxToVh(sheetContent.scrollHeight);
-                    if (sheetHeight < 25) { hideBottomSheet(); }
+                    if (sheetHeight <= startHeight / 1.5) { hideBottomSheet(); }
+                    else { updateSheetHeight(startHeight); }
+                    enableScroll();
                 }
             }
 
@@ -75,3 +78,17 @@ function pxToVh(px) {
     const vh = window.innerHeight * 0.01;
     return parseInt(px / vh);
 }
+
+const disableScroll = () => {
+    document.addEventListener('touchmove', preventDefault, { passive: false });
+    document.addEventListener('mousemove', preventDefault, { passive: false });
+};
+
+const enableScroll = () => {
+    document.removeEventListener('touchmove', preventDefault);
+    document.removeEventListener('mousemove', preventDefault);
+};
+
+const preventDefault = (e) => {
+    e.preventDefault();
+};
