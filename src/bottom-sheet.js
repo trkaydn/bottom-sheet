@@ -46,7 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!isDragging) return;
                 const delta = startY - (e.pageY || (e.touches && e.touches[0] && e.touches[0].pageY));
                 const newHeight = startHeight + delta / window.innerHeight * 100;
-                if (newHeight < startHeight) updateSheetHeight(newHeight);
+                if (newHeight < startHeight) {
+                    e.preventDefault();
+                    updateSheetHeight(newHeight);
+                }
             }
 
             const dragStop = () => {
@@ -65,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.addEventListener("mouseup", dragStop);
 
             dragIcon.addEventListener("touchstart", dragStart);
-            document.addEventListener("touchmove", dragging);
+            document.addEventListener("touchmove", dragging, { passive: false });
             document.addEventListener("touchend", dragStop);
 
             sheetOverlay.addEventListener("click", hideBottomSheet);
