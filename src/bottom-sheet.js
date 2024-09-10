@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (bottomSheet.classList.contains("dragging")) {
                     bottomSheet.classList.remove("dragging");
                     const sheetHeight = pxToVh(sheetContent.scrollHeight);
-                    if (sheetHeight <= startHeight / 1) { hideBottomSheet(); }
+                    if (sheetHeight <= startHeight / 1.2) { hideBottomSheet(); }
                     enableScroll();
                 }
             }
