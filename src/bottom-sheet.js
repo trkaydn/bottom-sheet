@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (bottomSheet.classList.contains("dragging")) {
                     bottomSheet.classList.remove("dragging");
                     const sheetHeight = pxToVh(sheetContent.scrollHeight);
-                    if (sheetHeight <= startHeight / 1.2) { hideBottomSheet(); }
+                    if (sheetHeight <= startHeight / 1.01) { hideBottomSheet(); }
                     enableScroll();
                 }
             }
@@ -76,14 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// function pxToVh(px) {
-//     const vh = window.innerHeight * 0.01;
-//     return parseInt(px / vh);
-// }
-function pxToVh(px) {
-    const vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight) * 0.01;
-    return parseInt(px / vh);
-}
+ function pxToVh(px) {
+     const vh = window.innerHeight * 0.01;
+     return parseInt(px / vh);
+ }
 
 const disableScroll = () => {
     document.addEventListener('touchmove', preventDefault, { passive: false });
