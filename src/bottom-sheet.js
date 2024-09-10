@@ -20,11 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const showBottomSheet = () => {
                 bottomSheet.classList.add("show");
                 document.body.style.overflowY = "hidden";
-                updateSheetHeight(pxToVh(sheetContent.scrollHeight));
+                startHeight = pxToVh(sheetContent.scrollHeight);
+                updateSheetHeight(startHeight);
             }
 
             const updateSheetHeight = (height) => {
-                sheetContent.style.height = `${height}vh`;
+                sheetContent.style.height = `${height}dvh`;
                 bottomSheet.classList.toggle("fullscreen", height === 100);
             }
 
@@ -37,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const dragStart = (e) => {
                 isDragging = true;
                 startY = e.pageY || (e.touches && e.touches[0] && e.touches[0].pageY);
-                startHeight = pxToVh(sheetContent.scrollHeight);
                 bottomSheet.classList.add("dragging");
                 disableScroll();
             }
@@ -57,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (bottomSheet.classList.contains("dragging")) {
                     bottomSheet.classList.remove("dragging");
                     const sheetHeight = pxToVh(sheetContent.scrollHeight);
-                    if (sheetHeight <= startHeight / 1.5) { hideBottomSheet(); }
-                    else { updateSheetHeight(startHeight); }
+                    if (sheetHeight <= startHeight / 1) { hideBottomSheet(); }
                     enableScroll();
                 }
             }
@@ -77,8 +76,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// function pxToVh(px) {
+//     const vh = window.innerHeight * 0.01;
+//     return parseInt(px / vh);
+// }
 function pxToVh(px) {
-    const vh = window.innerHeight * 0.01;
+    const vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight) * 0.01;
     return parseInt(px / vh);
 }
 
